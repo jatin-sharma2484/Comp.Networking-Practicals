@@ -1,0 +1,121 @@
+ASSIGNING IP's TO PC's ->
+
+PC0
+ip add -> 192.168.1.1
+subnet mask -> 255.255.255.0
+default gateway -> 192.168.1.2
+
+PC1
+ip add -> 192.168.2.1
+subnet mask -> 255.255.255.0
+default gateway -> 192.168.2.2
+
+PC2
+ip add -> 192.168.3.1
+subnet mask -> 255.255.255.0
+default gateway -> 192.168.3.2
+
+PC3
+ip add -> 192.168.4.1
+subnet mask -> 255.255.255.0
+default gateway -> 192.168.4.2
+
+ASSIGNING IP's TO ROUTERS ->
+
+Router 0
+R0>en
+R0#conf t
+R0(config)#hostname R0
+R0(config)#int gig0/0/0
+R0(config-if)#ip add 192.168.1.2 255.255.255.0
+R0(config-if)#no shutdown
+R0(config-if)#ex
+R0(config)#int se0/1/0
+R0(config-if)#ip add 10.0.0.1 255.0.0.0
+R0(config-if)#no shutdown
+R0(config-if)#ex
+R0(config)#int se0/1/1
+R0(config-if)#ip add 20.0.0.1 255.0.0.0
+R0(config-if)#no shutdown
+R0(config-if)#ex
+
+Router 1
+Router>en
+Router#conf t
+Router(config)#hostname R1
+R1(config)#int gig0/0/0
+R1(config-if)#ip add 192.168.2.2 255.255.255.0
+R1(config-if)#no shutdown
+R1(config-if)#ex
+R1(config)#int se0/1/0
+R1(config-if)#ip add 10.0.0.2 255.0.0.0
+R1(config-if)#no shutdown
+R1(config-if)#ex
+R1(config)#int se0/1/1
+R1(config-if)#ip add 30.0.0.1 255.0.0.0
+R1(config-if)#no shutdown
+R1(config-if)#ex
+
+Router 2
+Router>enable
+Router#configure terminal
+Router(config)#hostname R2
+R2(config)#int gig0/0/0
+R2(config-if)#ip add 192.168.3.2 255.255.255.0
+R2(config-if)#no shutdown
+R2(config-if)#ex
+R2(config)#int se0/1/0
+R2(config-if)#ip add 20.0.0.2 255.0.0.0
+R2(config-if)#no shutdown
+R2(config-if)#ex
+R2(config)#int se0/1/1
+R2(config-if)#ip add 40.0.0.1 255.0.0.0
+R2(config-if)#no shutdown
+R2(config-if)#ex
+
+Router 3
+Router>en
+Router#conf t
+Router(config)#hostname R3
+R3(config)#int gig0/0/0
+R3(config-if)#ip add 192.168.4.2 255.255.255.0
+R3(config-if)#no shutdown
+R3(config-if)#ex
+R3(config)#int se0/1/1
+R3(config-if)#ip add 30.0.0.2 255.0.0.0
+R3(config-if)#no shutdown
+R3(config-if)#ex
+R3(config)#int se0/1/0
+R3(config-if)#ip add 40.0.0.2 255.0.0.0
+R3(config-if)#no shutdown
+R3(config-if)#ex
+
+CONFIGURING EIGRP ->
+Router 0
+R0(config)#router eigrp 100
+R0(config-router)#network 192.168.1.0 
+R0(config-router)#network 20.0.0.0
+R0(config-router)#network 10.0.0.0
+R0(config-router)#exit
+
+Router 1
+R1(config)#router eigrp 200
+R1(config-router)#network 192.168.2.0
+R1(config-router)#network 30.0.0.0
+R1(config-router)#network 10.0.0.0
+R1(config-router)#exit
+
+Router 2
+R2(config)#router eigrp 300
+R2(config-router)#network 192.168.3.0
+R2(config-router)#network 20.0.0.0
+R2(config-router)#network 40.0.0.0
+R2(config-router)#ex
+
+Router 3
+R3(config)#router eigrp 400
+R3(config-router)#network 192.168.4.0
+R3(config-router)#network 30.0.0.0
+R3(config-router)#network 40.0.0.0
+R3(config-router)#ex
+
