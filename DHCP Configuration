@@ -1,0 +1,17 @@
+ASSIGNING IP ADD TO ROUTER->
+Router>en
+Router#conf t
+Router(config)#hostname R1
+R1(config)#int gig0/0/0
+R1(config-if)#ip add 192.168.1.1 255.255.255.0
+R1(config-if)#no sh
+R1(config-if)#ex
+
+CONFIGURING DHCP ON ROUTER->
+R1(config)#ip dhcp pool abc
+R1(dhcp-config)#default-router 192.168.1.1
+R1(dhcp-config)#network 192.168.1.0 255.255.255.0
+R1(dhcp-config)#ex
+
+##After that go on your systems and click on DESKTOP->IP CONFIGURATION->DHCP
+and you will b assigned ip addresses##
