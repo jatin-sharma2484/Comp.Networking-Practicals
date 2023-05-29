@@ -1,0 +1,39 @@
+Router 1-->
+Router>en
+Router#conf t
+Router(config)#hostname R1
+R1(config)#int se0/1/0
+R1(config-if)#ip add 200.1.1.1 255.255.255.0
+R1(config-if)#no sh
+R1(config-if)#ex
+R1(config)#int gig0/0/0
+R1(config-if)#ip add 192.168.1.1 255.255.255.0
+R1(config-if)#no sh 
+R1(config-if)#ex
+
+ISP-->
+Router>en
+Router#conf t
+Router(config)#hostname ISP
+ISP(config)#int se0/1/0
+ISP(config-if)#ip add 200.1.1.2 255.255.255.0
+ISP(config-if)#no sh
+ISP(config-if)#ex
+ISP(config)#int gig0/0/0
+ISP(config-if)#ip add 5.1.1.1 255.0.0.0
+ISP(config-if)#no sh
+ISP(config-if)#ex
+
+##CONFIGURE DHCP ON R1 AS GIVEN IN PREVIOUS PRACTICAL##
+CONFIGURING NAT ON R1-->
+R1(config)#access-list 1 permit 192.168.1.0 0.0.0.255
+R1(config)#ip nat pool abcd 200.1.1.6 200.1.1.10 netmask 255.255.255.0
+R1(config)#ip nat inside source list 1 pool abcd 
+R1(config)#int gig0/0/0
+R1(config-if)#ip nat inside
+R1(config-if)#ex
+R1(config)#int se0/1/0
+R1(config-if)#ip nat outside
+R1(config-if)#ex
+
+##NOW YOU CAN PING ANY PC TO THE SERVER BY ASSIGNING IP ADDRESS TO SERVER##
