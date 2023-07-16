@@ -1,0 +1,30 @@
+for switch 1 ------>
+
+Switch>en
+Switch#conf t
+Switch(config)#vlan 100
+Switch(config-vlan)#name sales
+Switch(config)#vlan 200
+Switch(config-vlan)#name marketing
+Switch(config-vlan)#ex
+Switch(config)#int fa0/2
+Switch(config-if)#switchport access vlan 100
+Switch(config-if)#switchport mode access
+Switch(config-if)#ex
+Switch(config)#int fa0/3
+Switch(config-if)#switchport access vlan 200
+Switch(config-if)#switchport mode access
+Switch(config-if)#ex
+Switch(config)#int fa0/1
+Switch(config-if)#switchport mode trunk
+
+for switch 2 ------>
+Switch>en
+Switch#conf t
+Switch(config)#int fa0/2
+Switch(config-if)#switchport access vlan 100
+Switch(config-if)#switchport mode access
+Switch(config-if)#ex
+Switch(config)#int fa0/3
+Switch(config-if)#switchport access vlan 200
+Switch(config-if)#switchport mode access
