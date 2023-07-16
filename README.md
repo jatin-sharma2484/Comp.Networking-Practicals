@@ -6,3 +6,6 @@
 
 # Comp.Networking-Practicals(NAT)
 ![nat](https://github.com/jatin-sharma2484/Comp.Networking-Practicals/assets/133746410/1ce32ca4-f6fc-4290-8f7c-02565b5e6e0c)
+
+# Comp.Networking-Practicals(VLAN)
+![vlan](https://github.com/jatin-sharma2484/Comp.Networking-Practicals/assets/133746410/bc1a18ad-b38f-41b9-ae67-55df1586f0a0)
