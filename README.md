@@ -9,3 +9,6 @@
 
 # Comp.Networking-Practicals(VLAN)
 ![vlan](https://github.com/jatin-sharma2484/Comp.Networking-Practicals/assets/133746410/bc1a18ad-b38f-41b9-ae67-55df1586f0a0)
+
+# Comp.Networking-Practicals(INTER-VLAN)
+![inter valn](https://github.com/jatin-sharma2484/Comp.Networking-Practicals/assets/133746410/170740bf-7cfb-4516-a789-9f047aa8e1f1)
