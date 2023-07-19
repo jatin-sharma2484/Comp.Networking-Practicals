@@ -1,0 +1,59 @@
+switch 1 configuration ---->
+Switch>en
+Switch#conf t
+Switch(config)#vlan 10
+Switch(config-vlan)#name abc
+Switch(config-vlan)#vlan 20
+Switch(config-vlan)#name abcd
+Switch(config-vlan)#ex
+Switch(config)#int range fa0/1-2
+Switch(config-if-range)#switchport access vlan 10
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#ex
+Switch(config)#int range fa0/3-4
+Switch(config-if-range)#switchport access vlan 20
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#ex
+Switch(config)#int fa0/5
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#int fa0/6
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#ex
+
+
+
+switch 2 configuration ---->
+Switch>en
+Switch#conf t
+Switch(config)#vlan 10
+Switch(config-vlan)#name abc
+Switch(config-vlan)#vlan 20 
+Switch(config-vlan)#name abcd
+Switch(config-vlan)#ex
+Switch(config)#int range fa0/1-2
+Switch(config-if-range)#switchport access vlan 10
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#ex
+Switch(config)#int range fa0/3-4
+Switch(config-if-range)#switchport access vlan 20
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#ex
+Switch(config)#int fa0/5
+Switch(config-if)#switchport mode trunk
+
+
+
+router configuration ---->
+Router>en
+Router#conf t
+Router(config)#int fa0/0
+Router(config-if)#no sh
+Router(config-if)#ex
+Router(config)#int fa0/0.10
+Router(config-subif)#encapsulation dot1q 10
+Router(config-subif)#ip address 10.0.0.10 255.0.0.0
+Router(config-subif)#ex
+Router(config)#int fa0/0.20
+Router(config-subif)#encapsulation dot1q 20
+Router(config-subif)#ip address 192.168.1.8 255.255.255.0
+Router(config-subif)#ex
