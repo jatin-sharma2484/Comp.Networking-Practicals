@@ -12,3 +12,6 @@
 
 # Comp.Networking-Practicals(INTER-VLAN)
 ![inter valn](https://github.com/jatin-sharma2484/Comp.Networking-Practicals/assets/133746410/170740bf-7cfb-4516-a789-9f047aa8e1f1)
+
+# Comp.Networking-Practicals(SSH)
+![ssh](https://github.com/jatin-sharma2484/Comp.Networking-Practicals/assets/133746410/d7df6b7e-893a-4f24-8924-d27ebb826d1c)
