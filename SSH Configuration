@@ -1,0 +1,26 @@
+## ASSIGNING IP ADD TO THE ROUTER ##
+
+Router>en
+Router#conf t
+Router(config)#hostname R1
+R1(config)#int fa0/1
+R1(config-if)#ip add 10.1.1.5 255.0.0.0
+R1(config-if)#no sh
+R1(config-if)#int fa0/0
+R1(config-if)#ip add 192.168.1.5 255.255.255.0
+R1(config-if)#no sh
+R1(config-if)#ex
+
+## CONFIGURING SSH ON ROUTER ##
+
+R1(config)#ip domain-name abc.com
+R1(config)#crypto key generate rsa
+R1(config)#username cisco password cisco
+R1(config)#line vty 0 15
+R1(config-line)#transport input ssh
+R1(config-line)#login local
+R1(config-line)#enable secret 1234
+
+## NOW GO ON ANY PC AND WRITE THE FOLLOWING COMMAND ##
+
+ssh -l cisco 10.1.1.5
